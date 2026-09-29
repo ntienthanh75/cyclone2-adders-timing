@@ -1,0 +1,35 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.std_logic_unsigned.all;
+
+ENTITY adders IS
+PORT (
+   clock   : IN  STD_LOGIC;
+   A, B, C : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
+   sum     : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
+   );
+END adders;
+
+ARCHITECTURE Behavior OF adders IS
+   -- Registers
+   SIGNAL reg_A, reg_B, reg_C : STD_LOGIC_VECTOR(7 DOWNTO 0);
+   SIGNAL reg_AB              : STD_LOGIC_VECTOR(8 DOWNTO 0);
+   SIGNAL reg_sum             : STD_LOGIC_VECTOR(9 DOWNTO 0);
+
+   ATTRIBUTE keep : boolean;
+   ATTRIBUTE keep OF reg_A, reg_B, reg_C, reg_sum : SIGNAL IS true;
+
+BEGIN
+   PROCESS ( clock )
+   BEGIN
+      IF (clock'EVENT AND clock = '1') THEN
+         reg_A   <= A;
+         reg_B   <= B;
+         reg_C   <= C;
+         reg_AB  <= ('0' & reg_A) + ('0' & reg_B);
+         reg_sum <= ('0' & reg_AB) + ("00" & reg_C);
+      END IF;
+   END PROCESS;
+
+   sum <= reg_sum;
+END Behavior;
