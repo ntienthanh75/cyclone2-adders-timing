@@ -1,6 +1,6 @@
 # Cyclone II Adder with Timing Constraints
 
-This project is part of the same Cyclone II board project family and implements an adder design with an SDC timing-constraints file.
+This repository contains one design in the shared Cyclone II FPGA Board project. It implements an adder with an SDC timing-constraints file.
 
 ## Target board
 
@@ -13,7 +13,7 @@ The shared LED, clock, buzzer, and joystick connections are documented in the [C
 
 ## Build
 
-Open `adders.qpf` in Quartus II 13.0 SP1 and compile. The project includes `adders.sdc` for timing constraints. The generated programming file is in `output_files`.
+Open `adders.qpf` in Quartus II 13.0 SP1 and compile. The repository includes `adders.sdc` for timing constraints. The generated programming file is in `output_files`.
 
 ## Download to the board
 
